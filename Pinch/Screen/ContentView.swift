@@ -12,6 +12,7 @@ struct ContentView: View {
     
     @State private var isAnimatin: Bool = false
     @State private var imageScale: CGFloat = 1
+    @State private var imageOffset: CGSize = CGSize(width: 0, height: 0)
     
     // MARK: - FUNCTION
     
