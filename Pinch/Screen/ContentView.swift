@@ -11,6 +11,7 @@ struct ContentView: View {
     // MARK: - PROPERTY
     
     @State private var isAnimatin: Bool = false
+    @State private var imageScale: CGFloat = 1
     
     // MARK: - FUNCTION
     
@@ -26,6 +27,19 @@ struct ContentView: View {
                     .padding()
                     .shadow(color: .black.opacity(0.2), radius: 12, x:2, y:2)
                     .opacity(isAnimatin ? 1 : 0)
+                    .scaleEffect(imageScale)
+                // MARK: - 1. TAP GESTURE
+                    .onTapGesture(count: 2, perform: {
+                        if imageScale == 1 {
+                            withAnimation(.spring()){
+                                imageScale = 5
+                            }
+                        } else {
+                            withAnimation(.spring()){
+                                imageScale = 1
+                            }
+                        }
+                    })
                 
             } // : ZSTACK
             .navigationTitle("Pinch & Zoom")
