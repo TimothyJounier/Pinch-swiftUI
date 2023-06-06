@@ -10,7 +10,7 @@ import SwiftUI
 struct ContentView: View {
     // MARK: - PROPERTY
     
-    @State private var isAnimatin: Bool = false
+    @State private var isAnimating: Bool = false
     @State private var imageScale: CGFloat = 1
     @State private var imageOffset: CGSize = .zero
     
@@ -36,7 +36,7 @@ struct ContentView: View {
                     .cornerRadius(10)
                     .padding()
                     .shadow(color: .black.opacity(0.2), radius: 12, x:2, y:2)
-                    .opacity(isAnimatin ? 1 : 0)
+                    .opacity(isAnimating ? 1 : 0)
                     .offset(x: imageOffset.width, y: imageOffset.height)
                     .scaleEffect(imageScale)
                 // MARK: - 1. TAP GESTURE
@@ -68,7 +68,7 @@ struct ContentView: View {
             .navigationBarTitleDisplayMode(.inline)
             .onAppear(perform: {
                 withAnimation(.linear(duration: 1)){
-                    isAnimatin = true
+                    isAnimating = true
                 }
             })
             // MARK: - INFO PANEL
@@ -77,6 +77,55 @@ struct ContentView: View {
                     .padding(.horizontal)
                     .padding(.top, 30)
                 , alignment: .top
+            )
+            // MARK: - CONTROLS
+            .overlay(
+                Group {
+                    HStack {
+                       // SCALE DOWN
+                        Button {
+                            withAnimation(.spring()) {
+                                if imageScale > 1 {
+                                    imageScale -= 1
+                                    
+                                    if imageScale <= 1 {
+                                        resetImageState()
+                                    }
+                                }
+                            }                        } label: {
+                            ControlImageView(icon: "minus.magnifyingglass")
+                        }
+                        
+                       // RESET
+                        Button {
+                            resetImageState()
+                        } label: {
+                            ControlImageView(icon: "arrow.up.left.and.down.right.magnifyingglass")
+                        }
+                        
+                       //SCALE UP
+                        Button {
+                            withAnimation(.spring()){
+                                if imageScale < 5 {
+                                    imageScale += 1
+                                    
+                                    if imageScale > 5 {
+                                        imageScale = 5
+                                    }
+                                }
+                            }
+                        } label: {
+                            ControlImageView(icon: "plus.magnifyingglass")
+                        }
+                        
+                    } //: CONTROLS
+                    .padding(EdgeInsets(top: 12, leading: 20, bottom: 12, trailing: 20))
+                    .background(.ultraThinMaterial)
+                    .cornerRadius(12)
+                    .opacity(isAnimating ? 1 : 0)
+                }
+                    .padding(.bottom, 30)
+                , alignment: .bottom
             )
         } // : NAVIGATION
         .navigationViewStyle(.stack)
