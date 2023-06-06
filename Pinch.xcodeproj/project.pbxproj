@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A519BB712A2F284200D98821 /* InfoPanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A519BB702A2F284200D98821 /* InfoPanelView.swift */; };
 		A5384DB32A1F3323000306BC /* PinchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5384DB22A1F3323000306BC /* PinchApp.swift */; };
 		A5384DB52A1F3323000306BC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5384DB42A1F3323000306BC /* ContentView.swift */; };
 		A5384DB72A1F3325000306BC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5384DB62A1F3325000306BC /* Assets.xcassets */; };
@@ -14,6 +15,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A519BB702A2F284200D98821 /* InfoPanelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoPanelView.swift; sourceTree = "<group>"; };
 		A5384DAF2A1F3323000306BC /* Pinch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pinch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5384DB22A1F3323000306BC /* PinchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinchApp.swift; sourceTree = "<group>"; };
 		A5384DB42A1F3323000306BC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -81,6 +83,7 @@
 		A5384DC12A1F351F000306BC /* View */ = {
 			isa = PBXGroup;
 			children = (
+				A519BB702A2F284200D98821 /* InfoPanelView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -171,6 +174,7 @@
 			files = (
 				A5384DB52A1F3323000306BC /* ContentView.swift in Sources */,
 				A5384DB32A1F3323000306BC /* PinchApp.swift in Sources */,
+				A519BB712A2F284200D98821 /* InfoPanelView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

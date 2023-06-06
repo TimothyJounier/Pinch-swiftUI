@@ -16,10 +16,19 @@ struct ContentView: View {
     
     // MARK: - FUNCTION
     
+    func resetImageState() {
+        return withAnimation(.spring()) {
+            imageScale = 1
+            imageOffset = (.zero)
+        }
+    }
+    
     // MARK: - CONTENT
     var body: some View {
         NavigationView {
             ZStack {
+                Color.clear
+                
                 // MARK: - PAGE IMAGE
                 Image("magazine-front-cover")
                     .resizable()
@@ -37,9 +46,7 @@ struct ContentView: View {
                                 imageScale = 5
                             }
                         } else {
-                            withAnimation(.spring()){
-                                imageScale = 1
-                            }
+                            resetImageState()
                         }
                     })
                 // MARK: - 2. DRAG GESTURE
@@ -52,10 +59,7 @@ struct ContentView: View {
                             }
                             .onEnded { _ in
                                 if imageScale <= 1 {
-                                    withAnimation(.spring()){
-                                        imageScale = 1
-                                        imageOffset = .zero
-                                    }
+                                   resetImageState()
                                 }
                             }
                     )
@@ -67,6 +71,13 @@ struct ContentView: View {
                     isAnimatin = true
                 }
             })
+            // MARK: - INFO PANEL
+            .overlay(
+                InfoPanelView(scale: imageScale, offset: imageOffset)
+                    .padding(.horizontal)
+                    .padding(.top, 30)
+                , alignment: .top
+            )
         } // : NAVIGATION
         .navigationViewStyle(.stack)
     }
